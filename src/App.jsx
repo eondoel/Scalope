@@ -914,7 +914,7 @@ export default function App() {
           <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 12 }}>
             Pick your root note:
           </p>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <div className="note-picker" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {NOTE_NAMES.map(note => (
               <button
                 key={note}
@@ -931,6 +931,8 @@ export default function App() {
                   fontWeight: 700,
                   color: lockedNote === note ? scale.color : 'var(--text)',
                   transition: 'all 0.15s',
+                  padding: '8px',
+                  minHeight: '48px',
                 }}
               >
                 {note}
@@ -1014,13 +1016,14 @@ export default function App() {
             </button>
           </div>
 
-          {/* Tabs & Tempo Control */}
-          <div style={{
+          {/* Tabs & Controls */}
+          <div className="control-bar" style={{
             display: 'flex',
             borderBottom: '1px solid var(--border)',
             alignItems: 'stretch',
           }}>
-            <div style={{
+            {/* Tabs */}
+            <div className="control-section" style={{
               display: 'flex',
               flex: 1,
               borderRight: '1px solid var(--border)',
@@ -1035,7 +1038,7 @@ export default function App() {
                   onClick={() => setTab(t.key)}
                   style={{
                     flex: 1,
-                    padding: '12px',
+                    padding: '12px 14px',
                     border: 'none',
                     background: 'none',
                     cursor: 'pointer',
@@ -1045,6 +1048,7 @@ export default function App() {
                     borderBottom: `2px solid ${tab === t.key ? scale.color : 'transparent'}`,
                     transition: 'all 0.2s',
                     fontFamily: 'Inter, sans-serif',
+                    minHeight: '48px',
                   }}
                 >
                   {t.label}
@@ -1053,14 +1057,14 @@ export default function App() {
             </div>
 
             {/* Tempo Control */}
-            <div style={{
+            <div className="control-section" style={{
               display: 'flex',
               alignItems: 'center',
               padding: '0 16px',
               gap: 8,
               minWidth: 180,
             }}>
-              <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600 }}>
+              <span style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600 }}>
                 ♩ BPM
               </span>
               <input
@@ -1092,7 +1096,7 @@ export default function App() {
             </div>
 
             {/* Volume Control */}
-            <div style={{
+            <div className="control-section" style={{
               display: 'flex',
               alignItems: 'center',
               padding: '0 16px',
@@ -1100,7 +1104,7 @@ export default function App() {
               minWidth: 160,
               borderLeft: '1px solid var(--border)',
             }}>
-              <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600 }}>
+              <span style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600 }}>
                 🔊 VOL
               </span>
               <input
@@ -1132,7 +1136,7 @@ export default function App() {
             </div>
 
             {/* Sound Type Selector */}
-            <div style={{
+            <div className="control-section" style={{
               display: 'flex',
               alignItems: 'center',
               padding: '0 16px',
@@ -1140,7 +1144,7 @@ export default function App() {
               minWidth: 180,
               borderLeft: '1px solid var(--border)',
             }}>
-              <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600 }}>
+              <span style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600 }}>
                 🎵 TONE
               </span>
               <select
@@ -1148,12 +1152,12 @@ export default function App() {
                 onChange={(e) => setSoundType(e.target.value)}
                 style={{
                   flex: 1,
-                  padding: '6px 8px',
+                  padding: '8px 10px',
                   borderRadius: 6,
                   border: '1px solid var(--border)',
                   background: 'var(--bg3)',
                   color: 'var(--text)',
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: 600,
                   cursor: 'pointer',
                   fontFamily: 'Inter, sans-serif',

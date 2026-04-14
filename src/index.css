@@ -67,3 +67,110 @@ html, body {
 .note-pop {
   animation: note-pop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+
+/* Mobile Responsive Design - Updated */
+@media (max-width: 768px) {
+  /* Root and typography scaling */
+  :root {
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  /* Main heading */
+  h1 {
+    font-size: 22px !important;
+  }
+
+  /* Section labels and buttons */
+  button, [role="button"], input[type="range"], .control-label {
+    font-size: 13px !important;
+  }
+
+  /* Tab labels */
+  [role="tab"], .tab-label {
+    font-size: 13px !important;
+    padding: 14px 12px !important;
+  }
+
+  /* All interactive elements - increase padding for touch */
+  button {
+    padding: 12px 14px !important;
+    min-height: 48px !important;
+  }
+
+  /* Main app container - add side padding */
+  [style*="maxWidth: 800"] {
+    padding: 0 12px 40px !important;
+  }
+
+  /* Fretboard container - remove minWidth forcing scroll */
+  [style*="minWidth: 480"] {
+    min-width: unset !important;
+    width: 100% !important;
+    overflow-x: auto;
+  }
+
+  /* Manual note picker - 3 column grid on mobile */
+  .note-picker {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Control bar - stack vertically */
+  /* Target the main control container */
+  div[style*="display: flex"][style*="border-bottom: 1px solid var(--border)"][style*="align-items: stretch"] {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Target control sections - the specific divs inside control bar */
+  div[style*="padding: 0 16px"][style*="gap: 8"] {
+    width: 100% !important;
+    flex: 1 !important;
+    min-width: unset !important;
+    border-left: none !important;
+    padding: 0 !important;
+  }
+
+  div[style*="padding: 0 16px"][style*="gap: 8"][style*="min-width: 180"] {
+    margin-bottom: 12px !important;
+  }
+
+  /* Scale genre cards - better tap targets */
+  button[class*="genre"], .genre-card {
+    padding: 14px 16px !important;
+    min-height: 90px !important;
+  }
+
+  /* Fretboard sizing on mobile */
+  svg[style*="minWidth"] {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  /* Song suggestion note boxes */
+  [style*="width: 56"] {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  /* Reduce fret labels size */
+  text {
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small phones - even tighter */
+  :root {
+    --radius: 10px;
+  }
+
+  h1 {
+    font-size: 20px !important;
+  }
+
+  /* Manual note picker on very small screens - 2 columns */
+  .note-picker {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
